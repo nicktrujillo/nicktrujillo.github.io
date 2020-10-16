@@ -256,7 +256,7 @@ img {
 .home-img {
   position: absolute;
   right: 1%;
-  bottom: 10%;
+  bottom: 5%;
   width: 296px;
   filter: hue-rotate(240deg) drop-shadow(10px 20px 5px black)
     drop-shadow(0px 0px 50px var(--green)) opacity(0.5);
