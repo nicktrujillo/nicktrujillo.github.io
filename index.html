@@ -10,10 +10,22 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
     />
-    <link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link
+      href="http://fonts.googleapis.com/css?family=Oleo+Script"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Great+Vibes"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
   </head>
+
   <body>
     <!--===== HEADER =====-->
     <header class="l-header">
@@ -39,11 +51,20 @@
             <li class="nav-item">
               <a href="#contact" class="nav-link">Contact</a>
             </li>
+            <li class="nav-item">
+              <a
+                id="resume"
+                target="_blank"
+                href="assets/Trujillo_Resume.pdf"
+                class="nav-link"
+                >Resume</a
+              >
+            </li>
           </ul>
         </div>
 
         <div class="nav-toggle" id="nav-toggle">
-          <i class="bx bx-menu"></i>
+          <i class="fas fa-bars"></i>
         </div>
       </nav>
     </header>
@@ -54,10 +75,10 @@
         <div class="home-data">
           <h1 class="home-title">
             Hi,<br />I'm <span class="home-title-color">Nick</span><br />
-            Web Developer
+            <div id="title"></div>
           </h1>
 
-          <a href="#" class="button">Contact</a>
+          <a href="#contact" class="button">Contact</a>
         </div>
 
         <div class="home-social">
@@ -87,42 +108,47 @@
           ></a>
         </div>
 
-        <div class="home-img" >
-          <img  src="assets/pixlr-bg-result.png" alt="" />
+        <div class="home-img">
+          <img src="assets/pixlr-bg-result.png" alt="" />
         </div>
       </section>
 
       <!--===== ABOUT =====-->
       <section class="about section" id="about">
-        <!-- <h2 class="section-title">About</h2> -->
-
         <div class="about-container bd-grid">
           <div class="about-img">
-            <!-- <img src="assets/img/about.jpg" alt="" /> -->
-            ABOUT
+            <h1 class="about-me">ABOUT ME</h1>
           </div>
 
           <div>
             <p class="about-text">
-              Hello! I'm Nick, a web developer from Las Vegas, NV. I enjoy building
+              Hello! I'm Nick, a developer from Las Vegas, NV. I enjoy building
               and designing exceptional websites, applications, and everything
               in between.
             </p>
             <br />
             <p class="about-text">
               After graduating from the University of Nevada, Reno I began
-              working on the Operations team at a FinTech startup (Monzo Bank).
-              While I was there, I fell in love with the engineering side! I
-              decided to follow my passion and enrolled in a full-time, immersive
-              coding bootcamp,
-              <a target="_blank" href="https://punchcode.org/">PunchCode</a>, to
-              learn all the skills necessary to develop beautiful web
+              working on the Operations team at a FinTech startup (<a
+                class="about-link"
+                target="_blank"
+                href="https://monzo.com/"
+                >Monzo Bank</a
+              >). While I was there, I fell in love with the engineering side! I
+              decided to follow my passion and enrolled in a full-time,
+              immersive coding bootcamp,
+              <a
+                class="about-link"
+                target="_blank"
+                href="https://punchcode.org/"
+                >PunchCode</a
+              >, to learn all the skills necessary to develop beautiful web
               applications.
             </p>
             <br />
             <p class="about-text">
-              In my free time I also enjoy writing tech blogs to share my journey and help teach
-              beginners.
+              I also enjoy creating YouTube videos and writing tech blogs in my
+              free time to share my journey and help teach beginners.
             </p>
           </div>
         </div>
@@ -130,10 +156,12 @@
 
       <!--===== SKILLS =====-->
       <section class="skills section" id="skills">
-        <h2 class="section-title">Skills</h2>
-
         <div class="skills-container bd-grid">
-          <div>
+          <div class="skills-img">
+            <h1 class="my-skills">MY SKILLS</h1>
+          </div>
+
+          <div class="skills-list">
             <p class="skills-text">
               I love all things JavaScript, especially the React framework. I am
               also proficient in technologies like redux, node.js, express,
@@ -172,7 +200,7 @@
             <div class="skills-data">
               <div class="skills-names">
                 <i class="fab fa-react skills-icon"></i>
-                <span class="skills-name">react.js</span>
+                <span class="skills-name">React</span>
               </div>
               <div class="skills-bar skills-react"></div>
               <div>
@@ -180,56 +208,316 @@
               </div>
             </div>
           </div>
-
-          <div class="skills-img">
-            <!-- <img src="assets/img/work3.jpg" alt="" class="skills-img" /> -->
-            Skills
-          </div>
         </div>
       </section>
 
       <!--===== WORK =====-->
       <section class="work section" id="work">
-        <h2 class="section-title">Work</h2>
-
+        <h2 class="section-title">WORK</h2>
         <div class="work-container bd-grid">
           <div class="work-img">
-            <img src="assets/memgame.png" alt="" />
+            <img src="assets/memgame.png" alt="" onClick="onOne()" />
           </div>
-          <div class="work-img">
-            <img src="assets/img/work2.jpg" alt="" />
+          <div id="overlay-one" class="overlay" onClick="offOne()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">Memory Game</h4>
+              <div id="overlay-description">
+                <p>
+                  Memory is a simple game you probably played as a kid. You have
+                  a bunch of cards arranged with their backs facing up. You flip
+                  two over. If they match, they remain face up. If they don't
+                  match, you flip them back over.
+                </p>
+                <br />
+                <p>I built this game to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>
+                    Understanding of functions, conditionals, loops, arrays
+                  </li>
+                  <li>Ability to properly sequence JavaScript statements</li>
+                  <li>
+                    Ability to change the DOM based on application state
+                    (win/loss, valid/invalid guess)
+                  </li>
+                  <li>Knowledge of CSS animations</li>
+                </ul>
+                <br />
+                <p>Built with: <b>JavaScript</b>, <b>HTML</b>, <b>CSS</b></p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-live"
+                  class="work-link"
+                  target="_blank"
+                  href="https://nicktrujillo.github.io/Memory-Game/"
+                  >Live <i class="fas fa-rocket"></i
+                ></a>
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/Memory-Game"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
           </div>
+
           <div class="work-img">
-            <img src="assets/img/work3.jpg" alt="" />
+            <img src="assets/todoapp.png" alt="" onClick="onTwo()" />
           </div>
-          <div class="work-img">
-            <img src="assets/img/work4.jpg" alt="" />
+          <div id="overlay-two" class="overlay" onClick="offTwo()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">ToDo App</h4>
+              <div id="overlay-description">
+                <p>
+                  This is a todo application that allows you to create new todo
+                  items, mark items as completed, and remove items from the
+                  list. There is also a filter that allows you to display all
+                  items, completed items, or active items.
+                </p>
+                <br />
+                <p>I built this app to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>Understanding of how React state works</li>
+                  <li>Ability to manage state with Redux</li>
+                  <li>Ability to build out React events</li>
+                </ul>
+                <br />
+                <p>
+                  Built with: <b>React</b>, <b>Redux</b>, <b>HTML</b>,
+                  <b>CSS</b>
+                </p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-live"
+                  class="work-link"
+                  target="_blank"
+                  href="https://nicktrujillo.github.io/ToDo-app/"
+                  >Live <i class="fas fa-rocket"></i
+                ></a>
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/ToDo-app"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
           </div>
+
           <div class="work-img">
-            <img src="assets/img/work5.jpg" alt="" />
+            <img src="assets/calculator.png" alt="" onClick="onThree()" />
           </div>
+          <div id="overlay-three" class="overlay" onClick="offThree()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">Calculator</h4>
+              <div id="overlay-description">
+                <p>
+                  A simple calculator utilizing all the building blocks of a
+                  functional web application.
+                </p>
+                <br />
+                <p>I built this app to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>Understanding of CSS layout and transitions</li>
+                  <li>Understanding of advanced vanilla JavaScript methods</li>
+                </ul>
+                <br />
+                <p>Built with: <b>JavaScript</b>, <b>HTML</b>, <b>CSS</b></p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-live"
+                  class="work-link"
+                  target="_blank"
+                  href="https://nicktrujillo.github.io/Calculator/"
+                  >Live <i class="fas fa-rocket"></i
+                ></a>
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/Calculator"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
           <div class="work-img">
-            <img src="assets/img/work6.jpg" alt="" />
+            <img src="assets/ecom.png" alt="" onClick="onFour()" />
+          </div>
+          <div id="overlay-four" class="overlay" onClick="offFour()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">Ecommerce Shopping Cart</h4>
+              <div id="overlay-description">
+                <p>
+                  This is an ecommerce shopping cart React component that allows
+                  you to view or hide your cart, add or remove items, and
+                  displays the subtotal of all items.
+                </p>
+                <br />
+                <p>I built this app to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>Understanding of React components</li>
+                  <li>Ability to manage state with Redux</li>
+                  <li>Ability to build out React events</li>
+                  <li>Understanding of Axios and Fetch API</li>
+                </ul>
+                <br />
+                <p>
+                  Built with: <b>React</b>, <b>Redux</b>, <b>HTML</b>,
+                  <b>CSS</b>
+                </p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/Ecom-Shopping-Cart"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-img">
+            <img src="assets/invitation.png" alt="" onClick="onFive()" />
+          </div>
+          <div id="overlay-five" class="overlay" onClick="offFive()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">Invitation Tracker</h4>
+              <div id="overlay-description">
+                <p>
+                  This is a full-stack Invitation Tracker application that
+                  consists of three pages: an invitee page, going page, and not
+                  going page. The invitee page displays a user from the
+                  <a
+                    class="work-link"
+                    target="_blank"
+                    href="https://randomuser.me/"
+                    >random user generator api</a
+                  >. You have the ability to accept or reject the random user,
+                  which then sends the user's data to the back end via a POST
+                  call. The back end consists of different routes that keep
+                  track of who is going or not going.
+                </p>
+                <br />
+                <p>I built this app to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>Understanding of React Router</li>
+                  <li>Understanding of Node.js</li>
+                  <li>Ability to create an Express.js server</li>
+                  <li>Ability to store and track data in a back end server</li>
+                </ul>
+                <br />
+                <p>
+                  Built with: <b>React</b>, <b>Redux</b>, <b>Node.js</b>,
+                  <b>Express</b>, <b>HTML</b>,
+                  <b>CSS</b>
+                </p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/Invitation-Tracker"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-img">
+            <img src="assets/hangman.png" alt="" onClick="onSix()" />
+          </div>
+          <div id="overlay-six" class="overlay" onClick="offSix()">
+            <div class="overlay-text">
+              <h4 id="overlay-title">Hangman</h4>
+              <div id="overlay-description">
+                <p>
+                  This is a word-guessing game similar to the classic Hangman.
+                  The app starts by choosing a random word, and the player then
+                  guesses a single letter at a time. The player has a fixed
+                  number of turns in which to guess all of the letters in the
+                  word.
+                </p>
+                <br />
+                <p>I built this game to show:</p>
+                <br />
+                <ul class="overlay-list">
+                  <li>
+                    Understanding of functions, conditionals, loops, arrays
+                  </li>
+                  <li>Ability to properly sequence JavaScript statements</li>
+                  <li>
+                    Ability to change the DOM based on application state
+                    (win/loss, valid/invalid guess)
+                  </li>
+                </ul>
+                <br />
+                <p>
+                  Built with: <b>Javascript</b>, <b>HTML</b>,
+                  <b>CSS</b>
+                </p>
+              </div>
+              <div class="overlay-links">
+                <a
+                  id="overlay-github"
+                  class="work-link"
+                  target="_blank"
+                  href="https://github.com/nicktrujillo/Hangman"
+                  >Code <i class="fab fa-github"></i
+                ></a>
+              </div>
+            </div>
           </div>
         </div>
+        <p class="work-text">
+          Check out all my work on
+          <a
+            class="work-link"
+            target="_blank"
+            href="https://github.com/nicktrujillo"
+            >GitHub</a
+          >.
+        </p>
       </section>
 
       <!--===== CONTACT =====-->
       <section class="contact section" id="contact">
-        <h2 class="section-title">Contact</h2>
+        <h2 class="section-title">CONTACT</h2>
 
         <div class="contact-container bd-grid">
-          <form action="" class="contact-form">
-            <input type="text" placeholder="Name" class="contact-input" />
-            <input type="mail" placeholder="Email" class="contact-input" />
+          <form
+            action="mailto:nicholasrtrujillo@gmail.com"
+            method="GET"
+            class="contact-form"
+          >
+            <input
+              name="subject"
+              type="text"
+              placeholder="Subject"
+              class="contact-input"
+            />
             <textarea
-              name=""
+              name="body"
               id=""
               cols="0"
               rows="10"
               class="contact-input"
             ></textarea>
-            <input type="button" value="Send" class="contact-button button" />
+            <input type="submit" value="Send" class="contact-button button" />
           </form>
         </div>
       </section>
@@ -268,6 +556,8 @@
 
     <!-- scroll reveal -->
     <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- typewriter -->
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <!-- main js -->
     <script src="main.js"></script>
   </body>
