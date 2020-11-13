@@ -96,18 +96,19 @@ function offSix() {
   document.querySelector("#overlay-six").style.display = "none";
 }
 
-const title = document.getElementById('title');
+const title = document.getElementById("title");
 
 const typewriter = new Typewriter(title, {
-    loop: true
+  loop: true,
 });
 
-typewriter.typeString('WEB DEVELOPER')
-    .pauseFor(1000)
-    .deleteChars(9)
-    .typeString('DESIGNER')
-    .pauseFor(1000)
-    .deleteAll()
-    .typeString('CREATOR')
-    .pauseFor(1000)
-    .start();
+typewriter
+  .typeString("DEVELOPER")
+  .pauseFor(1000)
+  .deleteAll()
+  .typeString("DESIGNER")
+  .pauseFor(1000)
+  .deleteAll()
+  .typeString("CREATOR")
+  .pauseFor(1000)
+  .start();
