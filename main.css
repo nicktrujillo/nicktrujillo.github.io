@@ -9,17 +9,17 @@
 /*===== Colors =====*/
 :root {
   --first-color: #e6f1ff;
-  --second-color: #8892b0;
+  --second-color: #bbbfcc;
   --dark-navy: #020c1b;
-  --navy: #0a192f;
+  --navy: #242423;
   --light-navy: #172a45;
   --lightest-navy: #303c55;
   --navy-shadow: rgba(2, 12, 27, 0.7);
-  --slate: #8892b0;
+  --slate: #bbbfcc;
   --light-slate: #a8b2d1;
   --lightest-slate: #ccd6f6;
   --white: #e6f1ff;
-  --green: #64ffda;
+  --green: #f64b4e;
   --green-tint: rgba(100, 255, 218, 0.1);
 }
 
@@ -229,7 +229,7 @@ img {
 }
 .home-title {
   font-size: var(--big-font-size);
-  margin-bottom: var(--mb-5);
+  margin-bottom: var(--mb-3);
 }
 .home-title-color {
   font: 400 100px/1.3 "Oleo Script", "Sansita Swashed", cursive;
@@ -252,11 +252,17 @@ img {
 .home-social-icon:hover {
   color: var(--green);
 }
-.home-img {
+.animation-wrapper {
   position: absolute;
-  width: 50%;
-  right: 16%;
-  bottom: 16%;
+  width: 55%;
+  right: -30%;
+  bottom: 0%;
+}
+.sphere path {
+  fill: url(#sphereGradient);
+  stroke-width: 1px;
+  stroke: rgba(80, 80, 80, 0.35);
+  backface-visibility: hidden;
 }
 
 /*BUTTONS*/
@@ -285,7 +291,7 @@ img {
 }
 
 .about-me {
-  color: var(--white);
+  color: var(--slate);
   font-size: var(--big-font-size);
   letter-spacing: 1px;
   text-shadow: 2px 2px 3px var(--green);
@@ -297,7 +303,9 @@ img {
 }
 
 .about-text {
-  color: var(--lightest-slate);
+  color: var(--slate);
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 .about-link {
@@ -480,7 +488,7 @@ img {
   text-align: center;
   font-weight: var(--font-semi);
   padding: 2rem 0;
-  box-shadow: 0 1px 4px var(--green);
+  /* box-shadow: 0 1px 4px var(--green); */
 }
 .footer-social {
   margin-bottom: var(--mb-4);
@@ -553,10 +561,11 @@ img {
     margin-bottom: 0;
     margin-right: var(--mb-4);
   }
-  .home-img {
-    width: 430px;
-    right: 1rem;
-    bottom: 2rem;
+  .animation-wrapper {
+    position: absolute;
+    width: 60%;
+    right: 0%;
+    bottom: 22%;
   }
 
   .about-container,
@@ -602,10 +611,11 @@ img {
 }
 
 @media screen and (min-width: 936px) {
-  .home-img {
-    width: 457px;
-    right: 3rem;
-    bottom: 2rem;
+  .animation-wrapper {
+    position: absolute;
+    width: 66%;
+    right: 4%;
+    bottom: 30%;
   }
 }
 
@@ -614,10 +624,11 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
-  .home-img {
-    width: 500px;
-    right: 3rem;
-    bottom: 2rem;
+  .animation-wrapper {
+    position: absolute;
+    width: 66%;
+    right: 8%;
+    bottom: 33%;
   }
   .skills-img {
     grid-column-start: 2;
@@ -642,25 +653,56 @@ img {
 }
 
 @media screen and (min-width: 1140px) {
-  .home-img {
-    width: 500px;
-    right: 6rem;
-    bottom: 2rem;
+  .animation-wrapper {
+    position: absolute;
+    width: 66%;
+    right: 10%;
+    bottom: 38%;
   }
 }
 
 @media screen and (min-width: 1210px) {
-  .home-img {
-    width: 500px;
-    right: 8rem;
-    bottom: 3rem;
+  .animation-wrapper {
+    position: absolute;
+    width: 66%;
+    right: 10%;
+    bottom: 42%;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .home-img {
-    width: 500px;
-    right: 10rem;
-    bottom: 4rem;
+  .animation-wrapper {
+    width: 40%;
+    right: 12%;
+    bottom: 44%;
   }
 }
+
+@media screen and (min-width: 1500px) {
+  .animation-wrapper {
+    width: 40%;
+    right: 18%;
+    bottom: 48%;
+  }
+}
+
+/* =====Spere Animation===== */
+/* .animation-wrapper {
+  width: 50%;
+  padding-bottom: 50%;
+} */
+
+.sphere-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  /* height: 1000px; */
+  margin: -290px 0 0 -290px;
+}
+
+/* @media (min-width: 500px) {
+  .sphere path {
+    stroke-width: 0.4px;
+  }
+} */
