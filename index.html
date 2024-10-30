@@ -7,25 +7,31 @@
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <div id="toast" class="toast">
+        <svg class="checkmark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17L4 12"></path>
+        </svg>
+        <span>Email address copied</span>
+    </div>
+
     <section class="hero">
         <h1><span class="greeting-text">Hi, I'm</span> <span class="name">Nick</span></h1>
         <div class="title-container">
-            <p>DevOps Consultant</p>
-            <a href="mailto:your.email@example.com" class="icon-link" aria-label="Email">
+            <button class="icon-button" aria-label="Copy email address" onclick="copyEmail()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
-            </a>
+            </button>
         </div>
     </section>
 
     <section id="about" class="about">
-      <p>
-        I'm a DevOps consultant who specializes in Copado implementations, with a particular focus on their new AI Platform. Over the past 3years, I've helped organizations streamline their development processes by combining traditional DevOps practices with AI-enhanced solutions.
-        <br>
-        My background in software development gives me a unique perspective when working with clients. I understand both the technical challenges developers face and the bigger picture of what organizations need to deliver quality software efficiently. Whether it's setting up CICD pipelines, training teams on best practices, or helping clients leverage AI to optimize their workflows, I'm passionate about finding solutions that actually work in the real world.
-     </p>
+        <p>
+            I'm a DevOps consultant who specializes in Copado implementations, with a particular focus on their new AI Platform. Over the past two years, I've helped organizations streamline their development processes by combining traditional DevOps practices with AI-enhanced solutions. What really drives me is finding that sweet spot between technical excellence and practical implementation - taking complex systems and making them work seamlessly for development teams.
+
+            My background in software development gives me a unique perspective when working with clients. I understand both the technical challenges developers face and the bigger picture of what organizations need to deliver quality software efficiently. Whether it's setting up CI/CD pipelines, training teams on best practices, or helping clients leverage AI to optimize their workflows, I'm passionate about finding solutions that actually work in the real world.
+        </p>
     </section>
 
     <footer>

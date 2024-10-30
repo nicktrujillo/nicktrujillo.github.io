@@ -50,15 +50,9 @@ body {
 }
 
 @keyframes gradientFlow {
-  0% {
-      background-position: 0% 50%;
-  }
-  50% {
-      background-position: 100% 50%;
-  }
-  100% {
-      background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .bounce {
@@ -78,6 +72,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .hero h1 {
@@ -102,28 +97,23 @@ section {
 }
 
 .title-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  margin-top: 1rem;
   animation: slideIn 1s ease-out 0.2s backwards;
 }
 
-.title-container p {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-}
-
-.title-container .icon-link {
+.icon-button {
   color: var(--text-secondary);
   transition: all 0.3s ease;
-  padding: 0.25rem;
+  padding: 0.5rem;
   border-radius: 4px;
   display: flex;
   align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.title-container .icon-link:hover {
+.icon-button:hover {
   color: var(--hover);
   transform: translateY(-2px);
   background: rgba(37, 99, 235, 0.1);
@@ -148,6 +138,31 @@ section {
   font-size: 1.1rem;
   line-height: 1.8;
   margin: 0;
+}
+
+.toast {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: #10B981;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateX(200%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  transform: translateX(0);
+}
+
+.toast .checkmark {
+  stroke: white;
 }
 
 footer {
