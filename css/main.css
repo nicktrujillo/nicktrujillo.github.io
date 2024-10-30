@@ -36,7 +36,7 @@ main {
   overflow-x: hidden;
   position: relative;
   perspective: 1px;
-  padding-bottom: 1rem; /* Reduced to match smaller footer */
+  padding-bottom: 0.5rem; /* Match footer height */
 }
 
 @keyframes bounce {
@@ -186,11 +186,16 @@ section {
 footer {
   flex-shrink: 0;
   text-align: center;
-  padding: 0.75rem 0; /* Equal padding top and bottom */
-  color: var(--text-secondary);
-  font-size: 0.9rem;
   background-color: var(--bg-primary);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+  margin: 0; /* Remove any default margins */
+  padding: 0.5rem 0; /* Equal space above and below text */
+  line-height: 1; /* Prevent extra line height spacing */
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
