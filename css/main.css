@@ -36,7 +36,7 @@ main {
   overflow-x: hidden;
   position: relative;
   perspective: 1px;
-  padding-bottom: 0.5rem; /* Match footer height */
+  padding-bottom: 32px; /* Match footer height */
 }
 
 @keyframes bounce {
@@ -188,14 +188,17 @@ footer {
   text-align: center;
   background-color: var(--bg-primary);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  height: 32px; /* Set explicit small height */
+  display: flex;
+  align-items: center; /* Center text vertically */
+  justify-content: center; /* Center text horizontally */
 }
 
 footer p {
-  margin: 0; /* Remove any default margins */
-  padding: 0.5rem 0; /* Equal space above and below text */
-  line-height: 1; /* Prevent extra line height spacing */
+  margin: 0;
   color: var(--text-secondary);
   font-size: 0.9rem;
+  line-height: 1;
 }
 
 @media (max-width: 768px) {
