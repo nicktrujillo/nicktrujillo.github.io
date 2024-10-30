@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nick Trujillo</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Nick Trujillo - DevOps Consultant</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <main>
@@ -12,45 +12,50 @@
             <h1><span class="greeting-text">Hi, I'm</span> <span class="name">Nick</span></h1>
         </section>
 
-        <section id="about" class="about">
-            <div class="about-content">
-              <p>
-                As a Copado DevOps Consultant, I help organizations streamline their development processes by combining traditional DevOps practices with AI-enhanced solutions.
-                <br>
-                &nbsp;
-                <br>
-                My background in software development gives me a unique perspective when working with clients. I understand both the technical challenges developers face and the bigger picture of what organizations need to deliver quality software efficiently. Whether it's setting up CI/CD pipelines, training teams on best practices, or helping clients leverage AI to optimize their workflows, I'm passionate about finding solutions that actually work in the real world.
-              </p>
-            </div>
-        </section>
-
         <section class="social-links">
             <div class="social-container">
-                <a href="https://www.linkedin.com/in/nicholastrujillo1/" target="_blank" class="icon-button" aria-label="LinkedIn Profile">
+                <a href="https://www.linkedin.com/in/nicholastrujillo1/" class="icon-button" target="_blank" aria-label="LinkedIn Profile">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                        <rect x="2" y="9" width="4" height="12" />
                         <circle cx="4" cy="4" r="2"></circle>
                     </svg>
                 </a>
+
                 <div class="email-container">
-                    <button class="icon-button" aria-label="Copy email address" onclick="copyEmail()">
+                    <button class="icon-button" onclick="copyEmail()">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                     </button>
                     <div id="toast" class="toast">
                         <svg class="checkmark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 6L9 17L4 12"></path>
+                            <path d="M20 6L9 17L4 12" />
                         </svg>
-                        <span>Copied</span>
+                        Copied
                     </div>
                 </div>
             </div>
         </section>
-    </main>
 
-    <script src="js/main.js"></script>
+        <section id="about" class="about">
+            <div class="about-content">
+                As a Copado DevOps Consultant, I help organizations streamline their development processes by combining traditional DevOps practices with AI-enhanced solutions.
+                <br><br>
+                My background in software development gives me a unique perspective when working with clients. I understand both the technical challenges developers face and the bigger picture of what organizations need to deliver quality software efficiently. Whether it's setting up CI/CD pipelines, training teams on best practices, or helping clients leverage AI to optimize their workflows, I'm passionate about finding solutions that actually work in the real world.
+            </div>
+        </section>
+
+        <section class="clients">
+            <div class="section-header">
+                <h2><span class="gradient-text">Clients</span></h2>
+            </div>
+            <div class="bubble-container" id="bubbleContainer">
+                <!-- Bubbles will be added by JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
 </body>
 </html>
