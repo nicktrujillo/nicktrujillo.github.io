@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add clipboard functionality
   window.copyEmail = function() {
-      const email = 'nicholasrtrujillo@gmail.com';
+      const email = 'ntrujillo@copado.com';
       navigator.clipboard.writeText(email).then(() => {
           const toast = document.getElementById('toast');
           toast.classList.add('show');
