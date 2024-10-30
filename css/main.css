@@ -68,7 +68,7 @@ main.bounce {
 }
 
 section {
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -108,10 +108,11 @@ section {
   background: var(--bg-secondary);
   border-radius: 12px;
   padding: 4rem;
-  margin: 2rem auto;
+  margin: 1rem auto; /* Reduced from 2rem */
   max-width: 800px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  animation: slideIn 1s ease-out 0.2s backwards; /* Added animation with delay */
 }
 
 .about:hover {
@@ -134,7 +135,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  animation: slideIn 1s ease-out;
+  animation: slideIn 1s ease-out 0.4s backwards; /* Slightly longer delay */
 }
 
 .email-container {
@@ -200,6 +201,6 @@ section {
   }
 
   section {
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
   }
 }
