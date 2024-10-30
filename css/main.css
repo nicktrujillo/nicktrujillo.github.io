@@ -36,7 +36,6 @@ main {
   overflow-x: hidden;
   position: relative;
   perspective: 1px;
-  padding-bottom: 32px;
 }
 
 @keyframes bounce {
@@ -105,15 +104,37 @@ section {
   font-weight: bold;
 }
 
-.title-container {
-  margin-top: 1rem;
-  animation: slideIn 1s ease-out 0.2s backwards;
+.about {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 4rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.about:hover {
+  transform: translateY(-2px);
+}
+
+.about p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.social-links {
+  padding: 2rem;
+  text-align: center;
 }
 
 .social-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  animation: slideIn 1s ease-out;
 }
 
 .email-container {
@@ -166,44 +187,6 @@ section {
 
 .toast .checkmark {
   stroke: white;
-}
-
-.about {
-  background: var(--bg-secondary);
-  border-radius: 12px;
-  padding: 4rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.about:hover {
-  transform: translateY(-2px);
-}
-
-.about p {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  line-height: 1.8;
-  margin: 0;
-}
-
-footer {
-  flex-shrink: 0;
-  text-align: center;
-  background-color: var(--bg-primary);
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-footer p {
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  line-height: 1;
 }
 
 @media (max-width: 768px) {
