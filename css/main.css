@@ -36,6 +36,8 @@ main {
   overflow-x: hidden;
   position: relative;
   perspective: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes bounce {
@@ -68,15 +70,16 @@ main.bounce {
 }
 
 section {
-  padding: 3rem 2rem;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .hero {
   padding-top: 8rem;
+  padding-bottom: 4rem;
   text-align: center;
-  min-height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,18 +108,67 @@ section {
 }
 
 .about {
-  background: var(--bg-secondary);
-  border-radius: 12px;
-  padding: 4rem;
-  margin: 1rem auto; /* Reduced from 2rem */
-  max-width: 800px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
-  animation: slideIn 1s ease-out 0.2s backwards; /* Added animation with delay */
+  padding: 4rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: slideIn 1s ease-out 0.2s backwards;
 }
 
-.about:hover {
+.about-content {
+  background: linear-gradient(
+      135deg,
+      rgba(44, 44, 48, 0.9),
+      rgba(44, 44, 48, 0.7)
+  );
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 4rem;
+  max-width: 800px;
+  box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.2),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+  );
+}
+
+.about-content::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+  );
+}
+
+.about-content:hover {
   transform: translateY(-2px);
+  box-shadow: 
+      0 8px 30px rgba(0, 0, 0, 0.3),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.15);
 }
 
 .about p {
@@ -127,15 +179,16 @@ section {
 }
 
 .social-links {
-  padding: 2rem;
+  padding: 4rem 2rem;
   text-align: center;
+  margin-top: auto;
 }
 
 .social-container {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  animation: slideIn 1s ease-out 0.4s backwards; /* Slightly longer delay */
+  animation: slideIn 1s ease-out 0.4s backwards;
 }
 
 .email-container {
@@ -196,8 +249,11 @@ section {
   }
 
   .about {
+      padding: 2rem 1rem;
+  }
+
+  .about-content {
       padding: 2rem;
-      margin: 1rem;
   }
 
   section {
