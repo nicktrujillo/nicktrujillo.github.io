@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
   let lastScrollPosition = 0;
   let ticking = false;
 
-  body.addEventListener('wheel', function(e) {
+  main.addEventListener('wheel', function(e) {
       lastScrollPosition = body.scrollTop;
       
       if (!ticking) {

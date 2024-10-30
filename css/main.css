@@ -14,9 +14,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
   height: 100%;
-  overflow: hidden;
+  overflow: hidden; /* Prevent body scroll */
 }
 
 body {
@@ -25,16 +24,19 @@ body {
   color: var(--text-primary);
   background-color: var(--bg-primary);
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  perspective: 1px;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  overflow: hidden; /* Prevent body scroll */
 }
 
 main {
-  padding-bottom: 4rem; /* Adjust based on footer height */
+  flex: 1;
+  overflow-y: auto; /* Enable scroll for main content */
+  overflow-x: hidden;
+  position: relative;
+  perspective: 1px;
+  padding-bottom: 2rem; /* Space for footer */
 }
 
 @keyframes bounce {
@@ -62,8 +64,8 @@ main {
   100% { background-position: 0% 50%; }
 }
 
-.bounce {
-  animation: bounce 0.4s ease-in-out;
+main.bounce {
+  animation: bounce 0.4s ease-out;
 }
 
 section {
@@ -182,18 +184,13 @@ section {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-shrink: 0;
   text-align: center;
   padding: 1rem;
   color: var(--text-secondary);
   font-size: 0.9rem;
-  background-color: var(--bg-primary); /* Match the background color */
-  z-index: 10;
-  /* Add subtle shadow for depth */
-  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+  background-color: var(--bg-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
 }
 
 @media (max-width: 768px) {
