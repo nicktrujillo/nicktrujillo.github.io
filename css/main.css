@@ -282,9 +282,13 @@ section {
       0 4px 12px rgba(0, 0, 0, 0.2),
       inset 0 0 20px rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: 
+      transform 0.3s ease-out,
+      background-color 0.3s ease-out,
+      box-shadow 0.3s ease-out;
   will-change: transform;
   animation: float 8s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent; /* Remove default mobile tap highlight */
 }
 
 .bubble::before {
@@ -308,15 +312,15 @@ section {
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
 }
 
-.bubble:hover {
-  transform: scale(1.15);
-  background: rgba(75, 75, 80, 0.95); /* Slightly lighter on hover */
-  box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.3),
-      inset 0 0 30px rgba(255, 255, 255, 0.1);
-  z-index: 10;
+.bubble:hover,
+.bubble.touch-active {
+    transform: scale(1.15);
+    background: rgba(75, 75, 80, 0.95);
+    box-shadow: 
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    z-index: 10;
 }
-
 
 .bubble-lg {
   width: var(--bubble-lg);
@@ -362,10 +366,32 @@ section {
   }
 
   .bubble-container {
-    background: rgba(44, 44, 48, 0.15);
+    background: transparent;
   }
 
   .bubble-text {
     font-size: 0.6rem;
+  }
+}
+
+@media (hover: none) {
+  .bubble:hover {
+      /* Remove hover effects for touch devices */
+      transform: none;
+      background: rgba(65, 65, 70, 0.85);
+      box-shadow: 
+          0 4px 12px rgba(0, 0, 0, 0.2),
+          inset 0 0 20px rgba(255, 255, 255, 0.05);
+      z-index: auto;
+  }
+
+  .bubble.touch-active {
+      /* Ensure touch effect works */
+      transform: scale(1.15) !important;
+      background: rgba(75, 75, 80, 0.95) !important;
+      box-shadow: 
+          0 8px 24px rgba(0, 0, 0, 0.3),
+          inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
+      z-index: 10 !important;
   }
 }

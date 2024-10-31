@@ -1,3 +1,18 @@
+function addTouchInteraction(bubble) {
+    bubble.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // Prevent default touch behavior
+        bubble.classList.add('touch-active');
+    }, { passive: false });
+
+    bubble.addEventListener('touchend', () => {
+        bubble.classList.remove('touch-active');
+    });
+
+    bubble.addEventListener('touchcancel', () => {
+        bubble.classList.remove('touch-active');
+    });
+}
+
 // Throttle function for performance
 function throttle(func, limit) {
     let inThrottle;
@@ -220,6 +235,9 @@ document.addEventListener('DOMContentLoaded', function() {
             bubble.style.setProperty('--float-x', `${Math.random() * 8 - 4}px`);
             bubble.style.setProperty('--float-y', `${Math.random() * 8 - 4}px`);
             bubble.style.animationDelay = `${Math.random() * 2}s`;
+
+            // Add touch interaction
+            addTouchInteraction(bubble);
             
             bubble.appendChild(logo);
             fragment.appendChild(bubble);
