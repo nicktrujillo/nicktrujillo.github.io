@@ -364,7 +364,7 @@ section {
   .bubble-container {
     background: transparent;
     margin: 0;
-    padding: 0.1rem;
+    padding: 0;
   }
 
   .bubble-text {
