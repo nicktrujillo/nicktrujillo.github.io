@@ -371,5 +371,8 @@ section {
 
   .clients {
     padding: 0;
+    text-align: center;
+    width: 100%;
+    background: transparent;
   }
 }
