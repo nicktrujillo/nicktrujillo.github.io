@@ -275,22 +275,16 @@ section {
   justify-content: center;
   text-align: center;
   padding: 10px;
-  background: rgba(65, 65, 70, 0.85);
+  background: rgba(65, 65, 70, 0.85); /* Lighter background but same transparency */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 
       0 4px 12px rgba(0, 0, 0, 0.2),
       inset 0 0 20px rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  /* Split transitions for more immediate response */
-  transition: 
-      transform 0.3s ease-out,
-      background-color 0.3s ease-out,
-      box-shadow 0.3s ease-out;
-  will-change: transform, z-index;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  will-change: transform;
   animation: float 8s ease-in-out infinite;
-  touch-action: none;
 }
 
 .bubble::before {
@@ -314,13 +308,13 @@ section {
   filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
 }
 
-.bubble:hover,
-.bubble.touch-active {
-    transform: scale(1.15);
-    background: rgba(75, 75, 80, 0.95);
-    box-shadow: 
-        0 8px 24px rgba(0, 0, 0, 0.3),
-        inset 0 0 30px rgba(255, 255, 255, 0.1);
+.bubble:hover {
+  transform: scale(1.15);
+  background: rgba(75, 75, 80, 0.95); /* Slightly lighter on hover */
+  box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.3),
+      inset 0 0 30px rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
 
 
@@ -350,70 +344,32 @@ section {
   line-height: 1.2;
 }
 
-/* Mobile-specific styles */
 @media (max-width: 768px) {
-  /* Remove horizontal padding from clients section */
-  .clients {
-    padding: 4rem 0;
+  .hero h1 {
+    font-size: 2.5rem;
   }
 
-  /* Make container full width */
-  .bubble-container {
-    width: 100vw;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    padding: 1rem;
-    border-radius: 0;
-    background: transparent;
+  .about {
+    padding: 2rem 1rem;
   }
 
-  /* Adjust section padding */
+  .about-content {
+    padding: 2rem;
+  }
+
   section {
-    padding: 2rem 0;
-  }
-
-  /* Keep section header text properly aligned */
-  .section-header {
-    padding: 0 1rem;
-    margin-bottom: 2rem;
-  }
-}
-
-/* Additional media query for very small devices */
-@media (max-width: 480px) {
-  .clients {
-    padding: 3rem 0;
+    padding: 2rem 1rem;
   }
 
   .bubble-container {
-    height: clamp(600px, 85vh, 800px);
-  }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .bubble {
-      /* Faster transition for touch */
-      transition: 
-          transform 0.2s ease-out,
-          background-color 0.2s ease-out,
-          box-shadow 0.2s ease-out;
+    background: rgba(44, 44, 48, 0.15);
   }
 
-  .bubble:hover {
-      /* Reset hover styles for touch devices */
-      transform: none;
-      background: rgba(65, 65, 70, 0.85);
-      box-shadow: 
-          0 4px 12px rgba(0, 0, 0, 0.2),
-          inset 0 0 20px rgba(255, 255, 255, 0.05);
+  .bubble-text {
+    font-size: 0.6rem;
   }
 
-  .bubble.touch-active {
-      /* Immediate response for touch */
-      transform: scale(1.15) !important;
-      background: rgba(75, 75, 80, 0.95) !important;
-      box-shadow: 
-          0 8px 24px rgba(0, 0, 0, 0.3),
-          inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
+  .clients {
+    padding: 0;
   }
 }
