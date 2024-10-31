@@ -1,15 +1,18 @@
 function addTouchInteraction(bubble) {
-    bubble.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent default touch behavior
+    bubble.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        // Remove active class from all other bubbles
+        document.querySelectorAll('.bubble').forEach(b => {
+            if (b !== bubble) b.classList.remove('touch-active');
+        });
         bubble.classList.add('touch-active');
     }, { passive: false });
 
-    bubble.addEventListener('touchend', () => {
-        bubble.classList.remove('touch-active');
-    });
-
-    bubble.addEventListener('touchcancel', () => {
-        bubble.classList.remove('touch-active');
+    // Handle touch end on the document level
+    document.addEventListener('touchstart', function(e) {
+        if (!bubble.contains(e.target)) {
+            bubble.classList.remove('touch-active');
+        }
     });
 }
 

@@ -348,7 +348,7 @@ section {
   line-height: 1.2;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.5rem;
   }
@@ -372,11 +372,11 @@ section {
   .bubble-text {
     font-size: 0.6rem;
   }
-}
+} */
 
-@media (hover: none) {
+@media (hover: none) and (pointer: coarse) {
   .bubble:hover {
-      /* Remove hover effects for touch devices */
+      /* Reset hover styles for touch devices */
       transform: none;
       background: rgba(65, 65, 70, 0.85);
       box-shadow: 
@@ -386,7 +386,7 @@ section {
   }
 
   .bubble.touch-active {
-      /* Ensure touch effect works */
+      /* Ensure touch styles are applied */
       transform: scale(1.15) !important;
       background: rgba(75, 75, 80, 0.95) !important;
       box-shadow: 
