@@ -5,6 +5,14 @@
   --text-secondary: #b3b3b3;
   --accent: #1e40af;
   --hover: #2563eb;
+  
+  /* Dynamic bubble sizes based on viewport */
+  --bubble-lg: clamp(110px, 11vw, 180px);
+  --bubble-md: clamp(85px, 8vw, 140px);
+  --bubble-sm: clamp(65px, 6vw, 110px);
+  
+  /* Container height based on viewport */
+  --container-height: clamp(800px, 85vh, 1300px);
 }
 
 * {
@@ -66,8 +74,8 @@ main {
 }
 
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(var(--float-x), var(--float-y)) scale(1.02); }
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(var(--float-x), var(--float-y)); }
 }
 
 main.bounce {
@@ -139,10 +147,10 @@ section {
   overflow: hidden;
 }
 
-.about-content::before {
+.about-content::before,
+.about-content::after {
   content: '';
   position: absolute;
-  top: 0;
   left: 0;
   right: 0;
   height: 1px;
@@ -154,19 +162,12 @@ section {
   );
 }
 
+.about-content::before {
+  top: 0;
+}
+
 .about-content::after {
-  content: '';
-  position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.1),
-      transparent
-  );
 }
 
 .about-content:hover {
@@ -243,6 +244,8 @@ section {
 .clients {
   padding: 4rem 2rem;
   text-align: center;
+  width: 100%;
+  background: transparent;
 }
 
 .section-header {
@@ -254,11 +257,14 @@ section {
 
 .bubble-container {
   position: relative;
-  max-width: 1200px;
-  height: 600px;
+  width: 100%;
+  max-width: 100%;
+  height: var(--container-height);
   margin: 0 auto;
-  background: rgba(44, 44, 48, 0.1);
+  background: transparent;
   border-radius: 16px;
+  overflow: hidden;
+  padding: 2rem; /* Add padding to keep bubbles away from edges */
 }
 
 .bubble {
@@ -268,44 +274,17 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 10px; /* Reduced padding to give more room for logo */
-  background: rgba(44, 44, 48, 0.9); /* Slightly darker for better logo visibility */
+  padding: 10px;
+  background: rgba(65, 65, 70, 0.85); /* Lighter background but same transparency */
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 
-      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.2),
       inset 0 0 20px rgba(255, 255, 255, 0.05);
   cursor: pointer;
-  transition: all 0.3s ease;
-  animation: float 6s ease-in-out infinite;
-}
-
-.bubble-logo {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  transition: all 0.3s ease;
-  filter: brightness(0) invert(1) opacity(0.8); /* Makes logos white with slight transparency */
-}
-
-.bubble:hover .bubble-logo {
-  filter: brightness(0) invert(1) opacity(1); /* Full opacity on hover */
-  transform: scale(1.05);
-}
-
-/* Adjust logo sizes for different bubble sizes */
-.bubble-lg .bubble-logo {
-  width: 85%;
-  height: 85%;
-}
-
-.bubble-md .bubble-logo {
-  width: 80%;
-  height: 80%;
-}
-
-.bubble-sm .bubble-logo {
-  width: 75%;
-  height: 75%;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  will-change: transform;
+  animation: float 8s ease-in-out infinite;
 }
 
 .bubble::before {
@@ -320,76 +299,72 @@ section {
   filter: blur(2px);
 }
 
+.bubble-logo {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  transition: transform 0.2s ease-out;
+  /* Add slight glow to make logos pop against dark background */
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2));
+}
+
 .bubble:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  background: rgba(75, 75, 80, 0.95); /* Slightly lighter on hover */
   box-shadow: 
-      0 8px 24px rgba(0, 0, 0, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.3),
       inset 0 0 30px rgba(255, 255, 255, 0.1);
   z-index: 10;
 }
 
+
+.bubble-lg {
+  width: var(--bubble-lg);
+  height: var(--bubble-lg);
+  z-index: 3;
+}
+
+.bubble-md {
+  width: var(--bubble-md);
+  height: var(--bubble-md);
+  z-index: 2;
+}
+
+.bubble-sm {
+  width: var(--bubble-sm);
+  height: var(--bubble-sm);
+  z-index: 1;
+}
+
 .bubble-text {
-  color: var(--text-secondary);
+  color: var(--text-primary); /* Make fallback text more visible on dark background */
   font-size: 0.7rem;
   max-width: 90%;
   word-wrap: break-word;
   line-height: 1.2;
 }
 
-.bubble-lg {
-  width: 120px;
-  height: 120px;
-  z-index: 3;
-}
-
-.bubble-md {
-  width: 90px;
-  height: 90px;
-  z-index: 2;
-}
-
-.bubble-sm {
-  width: 70px;
-  height: 70px;
-  z-index: 1;
-}
-
 @media (max-width: 768px) {
   .hero h1 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
   .about {
-      padding: 2rem 1rem;
+    padding: 2rem 1rem;
   }
 
   .about-content {
-      padding: 2rem;
+    padding: 2rem;
   }
 
   section {
-      padding: 2rem 1rem;
+    padding: 2rem 1rem;
   }
 
   .bubble-container {
-    height: 800px;
+    background: rgba(44, 44, 48, 0.15);
   }
-  
-  .bubble-lg {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .bubble-md {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .bubble-sm {
-    width: 60px;
-    height: 60px;
-  }
-  
+
   .bubble-text {
     font-size: 0.6rem;
   }
