@@ -362,17 +362,13 @@ section {
   }
 
   .bubble-container {
-    background: rgba(44, 44, 48, 0.15);
+    background: transparent;
+    margin: 0;
+    padding: 0.1rem;
   }
 
   .bubble-text {
     font-size: 0.6rem;
   }
 
-  .clients {
-    padding: 0;
-    text-align: center;
-    width: 100%;
-    background: transparent;
-  }
 }
