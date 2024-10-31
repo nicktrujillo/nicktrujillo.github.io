@@ -1,17 +1,34 @@
 function addTouchInteraction(bubble) {
+    let touchTimeout;
+
     bubble.addEventListener('touchstart', function(e) {
         e.preventDefault();
-        // Remove active class from all other bubbles
-        document.querySelectorAll('.bubble').forEach(b => {
-            if (b !== bubble) b.classList.remove('touch-active');
+        // Clear any existing timeouts
+        clearTimeout(touchTimeout);
+        
+        // Remove active class from all other bubbles immediately
+        document.querySelectorAll('.bubble.touch-active').forEach(b => {
+            if (b !== bubble) {
+                b.classList.remove('touch-active');
+                b.style.zIndex = b.classList.contains('bubble-lg') ? '3' : 
+                                b.classList.contains('bubble-md') ? '2' : '1';
+            }
         });
+
+        // Add active class and bring to front immediately
         bubble.classList.add('touch-active');
+        bubble.style.zIndex = '10';
     }, { passive: false });
 
-    // Handle touch end on the document level
+    // Handle touch end
     document.addEventListener('touchstart', function(e) {
         if (!bubble.contains(e.target)) {
             bubble.classList.remove('touch-active');
+            // Reset z-index based on bubble size
+            touchTimeout = setTimeout(() => {
+                bubble.style.zIndex = bubble.classList.contains('bubble-lg') ? '3' : 
+                                    bubble.classList.contains('bubble-md') ? '2' : '1';
+            }, 300); // Match the transition duration
         }
     });
 }
@@ -121,10 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('bubbleContainer');
         const containerRect = container.getBoundingClientRect();
         
+        // Create document fragment for batch DOM updates
         const fragment = document.createDocumentFragment();
         
-        // Increase margins
-        const marginX = containerRect.width * 0.08;
+        // Adjust margins based on screen size
+        const isMobile = window.innerWidth <= 768;
+        const marginX = isMobile ? containerRect.width * 0.03 : containerRect.width * 0.08;
         const marginY = containerRect.height * 0.08;
         
         // Adjust available space
@@ -132,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const maxY = containerRect.height - marginY * 2;
         
         const shuffledClients = [...clients].sort(() => Math.random() - 0.5);
-        const placedBubbles = []; // Keep track of placed bubbles
+        const placedBubbles = [];
     
         // Get bubble size in pixels
         function getBubbleSize(size) {
@@ -224,8 +243,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Find position with minimal overlap
             const position = findValidPosition(client.size);
             
-            bubble.style.left = `${position.x}px`;
-            bubble.style.top = `${position.y}px`;
+             // Ensure bubbles stay within container bounds
+            const x = Math.min(Math.max(position.x, marginX), containerRect.width - bubbleSize - marginX);
+            const y = Math.min(Math.max(position.y, marginY), containerRect.height - bubbleSize - marginY);
+        
+            bubble.style.left = `${x}px`;
+            bubble.style.top = `${y}px`;
     
             // Track placed bubble
             placedBubbles.push({
@@ -254,7 +277,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let resizeTimeout;
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(createBubbles, 150);
+        resizeTimeout = setTimeout(() => {
+            // Force recalculation of container size
+            const container = document.getElementById('bubbleContainer');
+            container.innerHTML = '';
+            createBubbles();
+        }, 150);
     }, { passive: true });
 
     // Clipboard functionality
